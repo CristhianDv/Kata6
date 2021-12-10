@@ -1,17 +1,16 @@
 package toys;
-public class Car {
-    private final int SerialNumber;
+public class Helicopter {
+    private int serialNumber;
     private String type;
 
-    public Car(int SerialNumber, String type) {
-        this.SerialNumber = SerialNumber;
+    public Helicopter(int serialNumber, String type) {
+        this.serialNumber = serialNumber;
         this.type = type;
     }
 
     public int getSerialNumber() {
-        return SerialNumber;
+        return serialNumber;
     }
-    
     
     public void pack(){
         
