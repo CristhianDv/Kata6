@@ -1,12 +1,12 @@
 package toyproduct.models;
 
-import toyproduct.Toy;
+import toyproduct.*;
 
-public class CarToy implements Toy {
+public class AsianCarToy implements Toy {
     private final int serialNumber;
     private String type;
 
-    public CarToy(int serialNumber) {
+    public AsianCarToy(int serialNumber) {
         this.serialNumber = serialNumber;
         this.type = "coche";
     }
@@ -15,11 +15,14 @@ public class CarToy implements Toy {
         return serialNumber;
     }
     
+    
+    @Override
     public void pack(){
-        System.out.println("Packing " + type + " " + serialNumber);
+        System.out.println("Packing Asian Car " + type + " " + serialNumber);
     }
     
+    @Override
     public void label(){
-        System.out.println("Labelling " + type + " " + serialNumber);
+        System.out.println("Labelling Asian Car " + type + " " + serialNumber);
     }
 }

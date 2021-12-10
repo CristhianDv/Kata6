@@ -1,23 +1,25 @@
-import toyproduct.models.HelicopterToy;
-import toyproduct.models.CarToy;
+import branches.*;
+import business.ToyBusiness;
+import toyproduct.*;
+import toyproduct.models.*;
 import java.util.Scanner;
-import toyproduct.Toy;
-import toys.*;
+
 public class Main {
     public static void main(String[] args) {
-        ToyBusiness fabrica = new ToyBusiness();
+        // Fábrica americana
+        ToyBusiness fabrica = new AmericanToyBusiness();
         while (true) {
             Scanner escaner = new Scanner(System.in);
             
             switch (escaner.nextLine()) {
                 case "car":
                     Toy coche = fabrica.createToy("coche");
-                    CarToy cocheFinal = (CarToy) coche;
-                    System.out.println("Cochecito S/N " + cocheFinal.getSerialNumber());
+                    AmericanCarToy cocheFinal = (AmericanCarToy) coche;
+                    System.out.println("Coche S/N " + cocheFinal.getSerialNumber());
                     break;
                 case "helicopter":
                     Toy helicoptero = fabrica.createToy("helicoptero");
-                    HelicopterToy helicopteroFinal = (HelicopterToy) helicoptero;
+                    AmericanHelicopterToy helicopteroFinal = (AmericanHelicopterToy) helicoptero;
                     System.out.println("Helicoptero S/N " + helicopteroFinal.getSerialNumber());
                     break;
                 case "exit":
