@@ -1,9 +1,12 @@
-package toys;
-public class Car {
+package toyproduct.models;
+
+import toyproduct.Toy;
+
+public class CarToy implements Toy {
     private final int serialNumber;
     private String type;
 
-    public Car(int serialNumber) {
+    public CarToy(int serialNumber) {
         this.serialNumber = serialNumber;
         this.type = "coche";
     }

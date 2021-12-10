@@ -1,4 +1,7 @@
+import toyproduct.models.HelicopterToy;
+import toyproduct.models.CarToy;
 import java.util.Scanner;
+import toyproduct.Toy;
 import toys.*;
 public class Main {
     public static void main(String[] args) {
@@ -8,12 +11,14 @@ public class Main {
             
             switch (escaner.nextLine()) {
                 case "car":
-                    Car coche = fabrica.createCar();
-                    System.out.println("Cochecito S/N " + coche.getSerialNumber());
+                    Toy coche = fabrica.createToy("coche");
+                    CarToy cocheFinal = (CarToy) coche;
+                    System.out.println("Cochecito S/N " + cocheFinal.getSerialNumber());
                     break;
                 case "helicopter":
-                    Helicopter helicoptero = fabrica.createHelicopter();
-                    System.out.println("Helicoptero S/N " + helicoptero.getSerialNumber());
+                    Toy helicoptero = fabrica.createToy("helicoptero");
+                    HelicopterToy helicopteroFinal = (HelicopterToy) helicoptero;
+                    System.out.println("Helicoptero S/N " + helicopteroFinal.getSerialNumber());
                     break;
                 case "exit":
                     System.out.println("Exiting ...");

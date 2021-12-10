@@ -1,4 +1,9 @@
 package toys;
+
+import toyproduct.Toy;
+import toyproduct.models.HelicopterToy;
+import toyproduct.models.CarToy;
+
 public class ToyBusiness {
     public SerialNumberGenerator serialNumberGenerator;
 
@@ -6,17 +11,21 @@ public class ToyBusiness {
         this.serialNumberGenerator = new SerialNumberGenerator();
     }
     
-    public Car createCar(){
-        Car coche = new Car(serialNumberGenerator.next());
-        coche.pack();
-        coche.label();
-        return coche;
-    }
-    
-    public Helicopter createHelicopter(){
-        Helicopter helicoptero = new Helicopter(serialNumberGenerator.next());
-        helicoptero.pack();
-        helicoptero.label();
-        return helicoptero;
+    public Toy createToy(String type){
+        switch (type) {
+            case "coche":
+                CarToy coche = new CarToy(serialNumberGenerator.next());
+                coche.pack();
+                coche.label();
+                return coche;
+            case "helicoptero":
+                HelicopterToy helicoptero = new HelicopterToy(serialNumberGenerator.next());
+                helicoptero.pack();
+                helicoptero.label();
+                return helicoptero;
+            default:
+                System.out.println("No existe ese tipo de juguete");
+        }
+        return null;
     }
 }
