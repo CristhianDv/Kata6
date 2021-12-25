@@ -1,29 +1,28 @@
 import business.ToyBusiness;
-import factories.regionalfactories.AmericanToyFactory;
-import factories.regionalfactories.AsianToyFactory;
+import factories.regionalfactories.AmericanCarToyFactory;
+import factories.regionalfactories.AsianHelicopterToyFactory;
+import java.util.ArrayList;
 import toyproduct.*;
 import toyproduct.models.*;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        // Fábrica americana
-        //ToyBusiness fabricaAmericana = new ToyBusiness(new AmericanToyFactory());
-        // Fábrica asiática
-        ToyBusiness fabricaAsiatica = new ToyBusiness(new AsianToyFactory());
-        while (true) {
-            Scanner escaner = new Scanner(System.in);
-            
-            switch (escaner.nextLine()) {
+        ToyBusiness business = new ToyBusiness();
+        business.add("car", new AmericanCarToyFactory());
+        business.add("helicopter", new AsianHelicopterToyFactory());
+        ArrayList<Toy> toys = new ArrayList<>();
+        
+        Scanner escaner = new Scanner(System.in);
+        String line = "";
+        while (!line.equals("exit")) {
+            line = escaner.nextLine();
+            switch (line) {
                 case "car":
-                    Toy coche = fabricaAsiatica.produceToy("coche");
-                    AsianCarToy cocheFinal = (AsianCarToy) coche;
-                    System.out.println("Coche S/N " + cocheFinal.getSerialNumber());
-                    break;
                 case "helicopter":
-                    Toy helicoptero = fabricaAsiatica.produceToy("helicoptero");
-                    AsianHelicopterToy helicopteroFinal = (AsianHelicopterToy) helicoptero;
-                    System.out.println("Helicoptero S/N " + helicopteroFinal.getSerialNumber());
+                    toys.add(business.produceToy(line));
+                    System.out.println("Juguetes fabricados S/N " + toys.stream().map(c -> c.toString()).collect(Collectors.joining(", ")));
                     break;
                 case "exit":
                     System.out.println("Exiting ...");
